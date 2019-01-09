@@ -6,7 +6,7 @@
         <p class="current-price">Current price: ${{stock.price}}</p>
       </div>
       <div class="middle">
-        <input type="number" v-model="count">
+        <input type="number" v-model="stock.count">
         <button @click="buyShare(stock)">Buy</button>
       </div>
       <div class="paying-price">{{stock.pusrchasedAmt}}</div>
@@ -32,13 +32,29 @@ export default {
       const newStock = this.stocks.find(item => {
         return item.id === stock.id;
       });
-      if (this.count > 0) {
-        newStock.count = Number(this.count);
-        newStock.pusrchasedAmt = stock.price * newStock.count;
-        let index = this.stocks.indexOf(newStock);
+      stock.count = Number(stock.count);
+      if (stock.count > 0) {
+        newStock.count = stock.count;
+        newStock.purchasedCount = stock.count + newStock.purchasedCount;
+        newStock.pusrchasedAmt =
+          newStock.pusrchasedAmt + stock.price * newStock.count;
+        const index = this.stocks.indexOf(newStock);
         this.$store.state.stocks[index] = newStock;
-        this.$store.state.purchasedStocks.push(newStock);
-        this.count = 0;
+        if (this.$store.state.purchasedStocks == 0) {
+          this.$store.state.purchasedStocks.push(newStock);
+        }
+        const existStock = this.$store.state.purchasedStocks.find(
+          purchasedStock => {
+            return purchasedStock.id == newStock.id;
+          }
+        );
+        if (existStock) {
+          const index = this.$store.state.purchasedStocks.indexOf(existStock);
+          this.$store.state.purchasedStocks[index] = newStock;
+        } else {
+          this.$store.state.purchasedStocks.push(newStock);
+        }
+        stock.count = 0;
         console.log(this.$store.state.stocks[index]);
       } else {
         alert("Enter Valid stock count");

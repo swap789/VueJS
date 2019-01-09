@@ -5,7 +5,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 4,
@@ -29,7 +32,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 5,
@@ -37,7 +41,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 6,
@@ -45,7 +50,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 7,
@@ -53,7 +59,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 8,
@@ -61,7 +68,8 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   },
   {
     id: 9,
@@ -69,6 +77,7 @@ export const stocks = [
     price: 150,
     pusrchasedAmt: 0,
     count: 0,
-    purchasedCount: 0
+    purchasedCount: 0,
+    sellingCount: 0
   }
 ];

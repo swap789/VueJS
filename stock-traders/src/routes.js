@@ -14,5 +14,6 @@ export default [
   {
     path: "/stocks",
     component: stocks
-  }
+  },
+  { path: "", redirect: "/stock-trader" }
 ];

@@ -4,10 +4,10 @@
       <div class="currency">
         <p class="currency-name">{{stock.stockName}}</p>
         <p class="current-price">Current price: ${{stock.price}}</p>
-        <p>Amount: {{stock.count}}</p>
+        <p>Amount: {{stock.purchasedCount}}</p>
       </div>
       <div class="middle">
-        <input type="number" v-model="purchasedCount">
+        <input type="number" v-model="stock.sellingCount">
         <button @click="sellStock(stock)">Sell</button>
       </div>
       <div class="paying-price">{{stock.pusrchasedAmt}}</div>
@@ -28,25 +28,32 @@ export default {
   },
   methods: {
     sellStock(stock) {
-      if (this.purchasedCount > 0) {
+      if (stock.sellingCount > 0) {
         const newStock = this.purchasedStocks.find(item => {
-          return stock.id === stock.id;
+          return item.id === stock.id;
         });
-        if (newStock.count >= this.purchasedCount) {
-          newStock.count = Number(this.purchasedCount);
-          newStock.purchasedCount = Number(newStock.purchasedCount);
-          newStock.count = newStock.count - newStock.purchasedCount;
+        stock.sellingCount = Number(stock.sellingCount);
+        if (newStock.purchasedCount >= stock.sellingCount) {
+          newStock.sellingCount = stock.sellingCount;
+          newStock.purchasedCount = Number(stock.purchasedCount);
+          newStock.purchasedCount =
+            newStock.purchasedCount - newStock.sellingCount;
 
-          let sellingAmount = stock.price * newStock.purchasedCount;
+          let sellingAmount = stock.price * newStock.sellingCount;
           newStock.pusrchasedAmt = newStock.pusrchasedAmt - sellingAmount;
           let index = this.purchasedStocks.indexOf(newStock);
-          this.$store.state.purchasedStocks.splice(index, newStock);
+     //     this.$store.state.purchasedStocks.splice(index, newStock);
+       //   stock.sellingCount = 0;
+          if (newStock.purchasedCount == 0) {
+            this.$store.state.purchasedStocks.splice(index,1);
+          }
         } else {
           alert("You dont have enough stocks to sell");
         }
       } else {
         alert("Enetr Valid amount of stocks");
       }
+      stock.sellingCount = 0;
     }
   }
 };
